@@ -1,0 +1,2607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex Editor Gravitybit</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="data:image/png;base64,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">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            background-color: #2d2d2d;
+            border-bottom: 2px solid #404040;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .highlighter {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .highlighter label {
+            font-size: 14px;
+            color: #ccc;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .highlighter label:hover {
+            color: #ffffff;
+        }
+
+        .show-guess {
+            display: none;
+        }
+
+        #show-guess-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            transition: background-color 0.2s;
+        }
+
+        #show-guess-button:hover {
+            background-color: #45a049;
+        }
+
+        #highlighter-checkbox {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-color: #2d2d2d;
+            border: 2px solid #626262;
+            border-radius: 3px;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        #highlighter-checkbox:checked {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        #highlighter-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 4px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        #highlighter-checkbox:hover {
+            border-color: #4CAF50;
+        }
+
+        .bits-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bits-control label {
+            font-size: 14px;
+            color: #ccc;
+            white-space: nowrap;
+        }
+
+        #bits {
+            width: 100px;
+            height: 6px;
+            background: #404040;
+            outline: none;
+            border-radius: 3px;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        #bits::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #4CAF50;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+        }
+
+        #bits::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #4CAF50;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+        }
+
+        .bits-value {
+            min-width: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .order-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .order-control label {
+            font-size: 14px;
+            color: #ccc;
+            white-space: nowrap;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #ccc;
+            user-select: none;
+        }
+
+        .radio-label input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #626262;
+            border-radius: 50%;
+            background-color: #2d2d2d;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .radio-label input[type="radio"]:checked {
+            border-color: #4CAF50;
+        }
+
+        .radio-label input[type="radio"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+        }
+
+        .radio-label input[type="radio"]:hover {
+            border-color: #4CAF50;
+        }
+
+        .radio-label span {
+            transition: color 0.2s;
+        }
+
+        .radio-label:hover span {
+            color: #4CAF50;
+        }
+
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow: auto;
+        }
+
+
+        .hex-panel {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hex-textarea {
+            width: 100%;
+            height: 150px;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border: 2px dashed #404040;
+            padding: 15px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            resize: none;
+            outline: none;
+            white-space: pre;
+            overflow: auto;
+            transition: border-color 0.3s ease;
+        }
+
+        .hex-textarea:hover {
+            border-color: #4CAF50;
+        }
+
+        .hex-textarea.drag-over {
+            border-color: #4CAF50;
+            background-color: #2a2a2a;
+        }
+
+        .hex-textarea.empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .hex-table-container {
+            width: 100%;
+            overflow: visible;
+            background-color: #1e1e1e;
+            display: none;
+        }
+
+        .data-table {
+            margin-right: 5px;
+            margin-bottom: 30px;
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 12px;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #626262;
+            text-align: center;
+            min-width: 30px;
+        }
+
+        .data-table th {
+            border-left: 1px solid #626262;
+            border-right: 1px solid #626262;
+            border-bottom: 1px solid #626262;
+            border-top: none;
+            position: sticky;
+            top: 0;
+            background-color: #252525;
+            color: #888;
+            font-weight: bold;
+        }
+
+        .data-table td {
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        .data-table td:hover {
+            background-color: #333;
+        }
+
+        .address-cell {
+            background-color: #252525 !important;
+            color: #888 !important;
+            font-weight: bold;
+            width: 80px;
+        }
+
+        .data-cell {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .data-cell:hover {
+            background-color: #94be96 !important;
+            color: #000 !important;
+        }
+
+        .data-cell:hover~.address-cell {
+            background-color: #94be96 !important;
+            color: #000 !important;
+        }
+
+        .data-cell-highlight {
+            background-color: #94be96 !important;
+            color: #000 !important;
+        }
+
+        .highlight-color-0 {
+            background-color: #CC99FF !important;
+            color: #000000 !important;
+        }
+
+        .highlight-color-1 {
+            background-color: #6699FF !important;
+            color: #FFFFFF !important;
+        }
+
+        .highlight-color-2 {
+            background-color: #33CCCC !important;
+            color: #000000 !important;
+        }
+
+        .highlight-color-3 {
+            background-color: #CCCC00 !important;
+            color: #000000 !important;
+        }
+
+        .highlight-color-4 {
+            background-color: #CC6600 !important;
+            color: #FFFFFF !important;
+        }
+
+        .highlight-color-5 {
+            background-color: #CC0000 !important;
+            color: #FFFFFF !important;
+        }
+
+        .highlight-color-6 {
+            background-color: #CC3399 !important;
+            color: #FFFFFF !important;
+        }
+
+        .highlight-color-7 {
+            background-color: #9933FF !important;
+            color: #FFFFFF !important;
+        }
+
+        .highlight-color-8 {
+            background-color: #003399 !important;
+            color: #FFFFFF !important;
+        }
+
+        .highlight-color-9 {
+            background-color: #669999 !important;
+            color: #FFFFFF !important;
+        }
+
+        .highlight-color-10 {
+            background-color: #6600CC !important;
+            color: #FFFFFF !important;
+        }
+
+        .highlight-color-11 {
+            background-color: #663300 !important;
+            color: #FFFFFF !important;
+        }
+
+        /* Hover effects */
+        .highlight-color-0:hover {
+            background-color: #B380FF !important;
+        }
+
+        .highlight-color-1:hover {
+            background-color: #5580FF !important;
+        }
+
+        .highlight-color-2:hover {
+            background-color: #28B3B3 !important;
+        }
+
+        .highlight-color-3:hover {
+            background-color: #B3B300 !important;
+        }
+
+        .highlight-color-4:hover {
+            background-color: #B35500 !important;
+        }
+
+        .highlight-color-5:hover {
+            background-color: #B30000 !important;
+        }
+
+        .highlight-color-6:hover {
+            background-color: #B32888 !important;
+        }
+
+        .highlight-color-7:hover {
+            background-color: #8828FF !important;
+        }
+
+        .highlight-color-8:hover {
+            background-color: #003380 !important;
+        }
+
+        .highlight-color-9:hover {
+            background-color: #558080 !important;
+        }
+
+        .highlight-color-10:hover {
+            background-color: #5500B3 !important;
+        }
+
+        .highlight-color-11:hover {
+            background-color: #552800 !important;
+        }
+
+        .highlight-brighter {
+            background-color: #a8c274 !important;
+            color: #000000 !important;
+        }
+
+        .highlight-brighter:hover {
+            background-color: #7a8f4a !important;
+            color: #000000 !important;
+        }
+
+        .highlight-brightest {
+            background-color: #c8d894 !important;
+            color: #000000 !important;
+        }
+
+        .highlight-brightest:hover {
+            background-color: #a8c274 !important;
+            color: #000000 !important;
+        }
+
+        .header-highlight {
+            background-color: #94be96 !important;
+            color: #000 !important;
+        }
+
+        .address-highlight {
+            background-color: #94be96 !important;
+            color: #000 !important;
+        }
+
+        .encoding-char-highlight {
+            background-color: #94be96 !important;
+            color: #000 !important;
+            border-radius: 2px;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 6px 10px;
+            border: 1px solid white;
+            border-radius: 4px;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            z-index: 1000;
+            pointer-events: none;
+            white-space: pre-line;
+            text-align: center;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .format-selector {
+            background-color: #2d2d2d;
+            color: #ffffff;
+            border: 1px solid #404040;
+            padding: 2px 4px;
+            font-size: 10px;
+            border-radius: 2px;
+        }
+
+
+        .encoding-cell {
+            background-color: #252525 !important;
+            color: #ccc !important;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 11px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            padding: 0 !important;
+        }
+
+
+        .encoding-char-cell {
+            display: inline-block;
+            width: 12px;
+            text-align: center;
+            padding: 2px 1px;
+            margin: 0;
+            border: 1px solid transparent;
+            transition: background-color 0.2s;
+        }
+
+        .encoding-char-cell:hover {
+            background-color: #94be96 !important;
+            color: #000 !important;
+        }
+
+        .encoding-selector {
+            background-color: #2d2d2d;
+            color: #ffffff;
+            border: 1px solid #404040;
+            padding: 2px 4px;
+            font-size: 10px;
+            border-radius: 2px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+        }
+
+        .clear-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            transition: background-color 0.2s;
+        }
+
+        .clear-button:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Hover effects for specific button types */
+        button.clear-button[style*="background-color: rgb(76, 175, 80)"]:hover,
+        button.clear-button[style*="background-color: #4CAF50"]:hover {
+            background-color: #45a049 !important;
+        }
+
+        button.clear-button[style*="background-color: rgb(33, 150, 243)"]:hover,
+        button.clear-button[style*="background-color: #2196F3"]:hover {
+            background-color: #0b7dda !important;
+        }
+
+        button.clear-button[style*="background-color: rgb(255, 165, 0)"]:hover,
+        button.clear-button[style*="background-color: #FFA500"]:hover {
+            background-color: #ff9500 !important;
+        }
+
+        button.clear-button[style*="background-color: #0D47A1"]:hover,
+        button.clear-button[style*="background-color: rgb(13, 71, 161)"]:hover {
+            background-color: #0A3D7F !important;
+            /* Darker blue for SAVE AS button hover */
+        }
+
+        .clear-row {
+            background-color: #2d2d2d !important;
+        }
+
+        .clear-cell {
+            text-align: center;
+            padding: 8px;
+            border: 1px solid #626262;
+            background-color: #2d2d2d !important;
+        }
+
+        .clear-cell:hover {
+            background-color: #2d2d2d !important;
+        }
+
+        .save-as-button {
+            display: block;
+        }
+
+        .hex-textarea.body-positioned {
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 150px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 3% auto;
+            padding: 20px;
+            border: 2px solid #404040;
+            border-radius: 8px;
+            width: 95%;
+            max-width: 1400px;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #404040;
+            padding-bottom: 10px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            color: #4CAF50;
+        }
+
+        .modal-close {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            transition: background-color 0.2s;
+        }
+
+        .modal-close:hover {
+            background-color: #d32f2f;
+        }
+
+        .modal-body {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .guess-item {
+            background-color: #2d2d2d;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border-left: 3px solid #4CAF50;
+        }
+
+        .guess-item strong {
+            color: #4CAF50;
+        }
+
+        .footer {
+            background-color: #2d2d2d;
+            border-top: 2px solid #404040;
+            margin-top: auto;
+        }
+
+        #description-en {
+            color: #ccc;
+            font-size: 13px;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #description-en .content-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        #description-en.expanded .content-wrapper {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        #description-en h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        #description-en h3::before {
+            content: '▼ ';
+            font-size: 10px;
+            vertical-align: middle;
+        }
+
+        #description-en.expanded h3::before {
+            content: '▲ ';
+        }
+
+        #description-en p {
+            margin-bottom: 8px;
+        }
+
+        #description-en .feature {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        #description-en ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        #description-en li {
+            margin-bottom: 4px;
+        }
+
+
+        #autor-infi-license {
+            border-top: 1px solid #404040;
+            color: #888;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        #autor-infi-license p {
+            margin: 8px 0;
+        }
+
+        #autor-infi-license a {
+            color: #4CAF50;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        #autor-infi-license a:hover {
+            color: #45a049;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1 id="header-counter">0x</h1>
+        <div class="highlighter">
+            <input type="checkbox" id="highlighter-checkbox">
+            <label for="highlighter-checkbox">Highlighter</label>
+        </div>
+        <div class="show-guess">
+            <button id="show-guess-button">Guesses</button>
+        </div>
+        <div class="order-control">
+            <label for="order">Order:</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="byte-order" value="little-endian" checked>
+                    <span>Little Endian</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="byte-order" value="big-endian">
+                    <span>Big Endian</span>
+                </label>
+            </div>
+        </div>
+        <div class="bits-control">
+            <label for="bits">Bits:</label>
+            <input type="range" id="bits" min="8" max="16" step="8" value="16">
+            <span class="bits-value" id="bits-value">16</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="hex-table-container" id="hexTableContainer">
+            <!-- Tables will be created dynamically -->
+        </div>
+        <div class="hex-panel">
+            <textarea class="hex-textarea empty" id="hexTextarea" oninput="updateHexDisplay()"
+                onclick="handleTextareaClick()" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)"
+                ondrop="handleDrop(event)" placeholder="
+❗️ Upload file or paste general (main) inspecting data
+📁 Drag & drop a file, click to browse, ctrl + v, paste from contex menu ( mouse 2 )" autofocus></textarea>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div id="description-en">
+            <h3>📖 Hex Editor with Highlighter Feature</h3>
+            <div class="content-wrapper">
+                <p>
+                    A simple <span class="feature">hexadecimal visualizer</span> designed for data visualization for
+                    more
+                    convenient
+                    reverse engineering, with advanced highlighting capabilities.
+                    This tool allows you to analyze binary files and EEPROM data. The <span
+                        class="feature">Highlighter</span>
+                    automatically identifies repeating patterns in your data.
+                </p>
+
+                <p><strong style="color: #ffffff;">Upload Behavior:</strong></p>
+                <p>
+                    When <span class="feature">uploading a file for the first time, only single file selection is
+                        available</span>.
+                    In the case when the main inspection file is already loaded, multiple file selection at once becomes
+                    available.
+                    You can upload files one by one to add them to the comparison set, or upload multiple files
+                    simultaneously when the main inspection file is already loaded.
+                </p>
+
+                <p><strong style="color: #ffffff;">Highlighter Function:</strong></p>
+                <p>
+                    The highlighter analyzes data in <span class="feature">Little Endian (LE) mode</span>, reading two
+                    bytes
+                    at a time.
+                    It highlights (colors) cells containing the same decimal value in one table with bright colors,
+                    easing
+                    attentional costs.
+                    The highlighter only highlights decimal values that are <span class="feature">greater than 110 and
+                        less
+                        than 10000</span>.
+                    <span style="font-weight: bold; color: #e24747;">Values below 111 are not highlighted.</span>
+                </p>
+
+                <p><strong style="color: #ffffff;">Key Features:</strong></p>
+                <ul>
+                    <li><span class="feature">Multi-file support:</span> Upload multiple binary files and compare them
+                        with
+                        each other, more data === more accuracy.</li>
+                    <li><span class="feature">Smart indicator:</span> Detects repeating decimal values [111-9999] and
+                        their
+                        addresses in multiple tables.</li>
+                    <li><span class="feature">Tooltip information:</span> Hover over any byte to see address in decimal
+                        and
+                        hexadecimal format, value in decimal and binary formats.</li>
+                    <li><span class="feature">Byte order control:</span> Toggle between Little Endian and Big Endian for
+                        16-bit values.</li>
+                    <li><span class="feature">Edit and save:</span> Modify hexadecimal data directly and export as
+                        binary
+                        files.</li>
+                    <li><span class="feature">Address format:</span> Toggle between decimal and hexadecimal address
+                        display.
+                    </li>
+                    <li><span class="feature">Address detection:</span> Automatically finds and suggests addresses that
+                        fit
+                        the pattern (template) and repeat more than 4 times.</li>
+                </ul>
+            </div>
+        </div>
+        <div id="autor-infi-license">
+            <p>Program type: Hex Editor Visualizer</p>
+            <p>Program name: Gravibit | Version: 0.0.1 BETA 2025.10.27 | ⚖️ License: <a
+                    href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT</a> | Autor: Gravitymir</p>
+        </div>
+    </div>
+
+    <!-- Modal for Show Guess -->
+    <div id="guessModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="guessModalTitle">The expected PIN consists of 0 tables</h2>
+                <button class="modal-close" onclick="closeGuessModal()">Close</button>
+            </div>
+            <div class="modal-body" id="guessModalBody">
+                <!-- Content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentData = new Uint8Array(0);
+        let cursorPosition = 0;
+        let currentFileName = '';
+        let currentFileSize = 0;
+        let isFromFile = false;
+        let tableIdentifiers = []; // Array to store table identifiers
+
+        let addressFormat = 'decimal'; // 'hex' or 'decimal'
+        let encodingFormat = 'ascii'; // 'ascii' only
+
+        // Initialize bits control
+        const bitsInput = document.getElementById('bits');
+        const bitsValue = document.getElementById('bits-value');
+        const orderControl = document.querySelector('.order-control');
+
+        // Function to toggle order control visibility
+        function toggleOrderControl() {
+            const value = parseInt(bitsInput.value);
+            if (value === 16) {
+                orderControl.style.display = 'flex';
+            } else {
+                orderControl.style.display = 'none';
+            }
+        }
+
+        bitsInput.addEventListener('input', function () {
+            bitsValue.textContent = this.value;
+            toggleOrderControl();
+        });
+
+        // Initialize order control visibility on page load
+        toggleOrderControl();
+
+        // Initialize order control
+        const orderRadios = document.querySelectorAll('input[name="byte-order"]');
+        let byteOrder = 'little-endian';
+        orderRadios.forEach(radio => {
+            radio.addEventListener('change', function () {
+                byteOrder = this.value;
+                console.log('Byte order changed to:', byteOrder);
+            });
+        });
+
+        // Function to update header counter with number of tables
+        function updateHeaderCounter() {
+            const hexTableContainer = document.getElementById('hexTableContainer');
+            const tables = hexTableContainer.querySelectorAll('.data-table');
+            const count = tables.length;
+            const headerCounter = document.getElementById('header-counter');
+            const highlighter = document.querySelector('.highlighter');
+            const orderControl = document.querySelector('.order-control');
+            const bitsControl = document.querySelector('.bits-control');
+
+            // Hide controls if no tables exist
+            if (highlighter) {
+                if (count === 0) {
+                    highlighter.style.display = 'none';
+                } else {
+                    highlighter.style.display = 'flex';
+                }
+            }
+
+            if (orderControl) {
+                if (count === 0) {
+                    orderControl.style.display = 'none';
+                } else {
+                    orderControl.style.display = 'flex';
+                }
+            }
+
+            if (bitsControl) {
+                if (count === 0) {
+                    bitsControl.style.display = 'none';
+                } else {
+                    bitsControl.style.display = 'flex';
+                }
+            }
+
+            if (headerCounter) {
+                if (count === 0) {
+                    // When no tables exist, show just "0x"
+                    headerCounter.textContent = '0x';
+                } else {
+                    // When tables exist, show count - 1 starting from 0x00
+                    const displayCount = count - 1;
+                    headerCounter.textContent = '0x' + displayCount.toString(16).toUpperCase().padStart(2, '0');
+                }
+            }
+
+            // Update textarea placeholder based on table count
+            updateTextareaPlaceholder(count);
+        }
+
+        // Function to update textarea placeholder based on upload mode
+        function updateTextareaPlaceholder(tableCount) {
+            const textarea = document.getElementById('hexTextarea');
+
+            if (tableCount === 0) {
+                // Single file upload mode
+                textarea.placeholder = "❗️ Upload file or paste general (main) inspecting data\n📁 Drag & drop a file, click to browse, ctrl + v, paste from contex menu ( mouse 2 )";
+            } else {
+                // Multi file upload mode
+                textarea.placeholder = "✅ Now is on multi uploading files 📁 📁 📁 📁 📁 mode ✅";
+            }
+        }
+
+        function updateHexDisplay() {
+            const textarea = document.getElementById('hexTextarea');
+            const hexTableContainer = document.getElementById('hexTableContainer');
+
+            // Get hex input and clean it
+            let hexInput = textarea.value.replace(/[^0-9A-Fa-f]/g, '');
+
+            // If input is not from a file, clear the filename
+            if (!isFromFile && hexInput.length > 0) {
+                currentFileName = '';
+            }
+
+            // Check if we're in multi-upload mode (tables exist)
+            const tables = hexTableContainer.querySelectorAll('.data-table');
+            const isMultiUploadMode = tables.length > 0;
+
+            // Only reset isFromFile flag if not in multi-upload mode
+            if (!isMultiUploadMode) {
+                isFromFile = false; // Reset flag only in single upload mode
+            }
+
+            // Update display based on content
+            if (hexInput.length === 0) {
+                // Don't clear if there's already data displayed
+                if (currentData.length === 0) {
+                    hexTableContainer.style.display = 'none';
+                    textarea.classList.add('empty');
+                    updateStatus();
+                    return;
+                } else {
+                    // Keep table visible and textarea clickable
+                    textarea.classList.add('empty');
+                    updateStatus();
+                    return;
+                }
+            } else {
+                // Show table container when there's data
+                hexTableContainer.style.display = 'block';
+                textarea.classList.remove('empty');
+            }
+
+            // Convert to bytes
+            const bytes = [];
+            for (let i = 0; i < hexInput.length; i += 2) {
+                if (i + 1 < hexInput.length) {
+                    bytes.push(parseInt(hexInput.substr(i, 2), 16));
+                }
+            }
+
+            currentData = new Uint8Array(bytes);
+            currentFileSize = currentData.length;
+
+            // Count existing tables and create new one
+            const existingTables = hexTableContainer.querySelectorAll('.data-table');
+            const tableNumber = existingTables.length;
+            const tableId = `data-table-${tableNumber}`;
+
+            // Store identifier in array (filename or tableID-N)
+            if (currentFileName) {
+                tableIdentifiers[tableNumber] = currentFileName;
+            } else {
+                tableIdentifiers[tableNumber] = `tableID-${tableNumber}`;
+            }
+
+            // Create new table element
+            const hexTable = document.createElement('table');
+            hexTable.className = 'data-table';
+            hexTable.id = tableId;
+
+            // Append table to container
+            hexTableContainer.appendChild(hexTable);
+
+            // Create header row
+            const headerRow = document.createElement('tr');
+
+            // First cell - format selector
+            const formatCell = document.createElement('th');
+            const formatSelect = document.createElement('select');
+            formatSelect.className = 'format-selector';
+            formatSelect.id = tableId.replace('data-table-', 'format-select-');
+            formatSelect.innerHTML = '<option value="decimal">Decimal</option><option value="hex">Hex</option>';
+            formatSelect.value = addressFormat;
+            formatSelect.onchange = function () {
+                addressFormat = this.value;
+                regenerateCurrentTable(hexTable);
+            };
+            formatCell.appendChild(formatSelect);
+            headerRow.appendChild(formatCell);
+
+            // Column headers 0-15
+            for (let i = 0; i < 16; i++) {
+                const headerCell = document.createElement('th');
+                if (addressFormat === 'hex') {
+                    headerCell.textContent = i.toString(16).toUpperCase().padStart(2, '0');
+                } else {
+                    headerCell.textContent = i.toString();
+                }
+                headerRow.appendChild(headerCell);
+            }
+
+            // Encoding header with table number
+            const encodingHeaderCell = document.createElement('th');
+            encodingHeaderCell.style.background = '#2d2d2d';
+            encodingHeaderCell.style.color = '#ffffff';
+
+            // Extract table number from tableId (e.g., "data-table-0" -> 0)
+            const tableNum = parseInt(tableId.replace('data-table-', ''));
+            const tableHexNum = '0x' + tableNum.toString(16).toUpperCase().padStart(2, '0');
+
+            encodingHeaderCell.textContent = `${tableHexNum}       ASCII`;
+            headerRow.appendChild(encodingHeaderCell);
+
+            hexTable.appendChild(headerRow);
+
+            // Create data rows
+            for (let i = 0; i < currentData.length; i += 16) {
+                const dataRow = document.createElement('tr');
+
+                // First cell - address (0, 16, 32, 64, 128, 256, 512, etc.)
+                const addressCell = document.createElement('td');
+                addressCell.className = 'address-cell';
+                if (addressFormat === 'hex') {
+                    addressCell.textContent = i.toString(16).toUpperCase().padStart(8, '0');
+                } else {
+                    addressCell.textContent = i.toString();
+                }
+                dataRow.appendChild(addressCell);
+
+                // Data cells (16 columns)
+                for (let j = 0; j < 16; j++) {
+                    const dataCell = document.createElement('td');
+                    dataCell.className = 'data-cell';
+                    dataCell.dataset.column = j;
+                    dataCell.dataset.row = i / 16;
+
+                    if (i + j < currentData.length) {
+                        dataCell.textContent = currentData[i + j].toString(16).toUpperCase().padStart(2, '0');
+                        dataCell.onclick = () => selectByte(i + j);
+                    } else {
+                        dataCell.textContent = '';
+                    }
+
+                    // Add hover events
+                    dataCell.onmouseenter = function (event) {
+                        highlightColumnAndRow(this);
+                        showTooltip(this);
+                    };
+                    dataCell.onmouseleave = function () {
+                        clearHighlights();
+                        hideTooltip();
+                    };
+
+                    dataRow.appendChild(dataCell);
+                }
+
+                // Encoding cell (18th column)
+                const encodingCell = document.createElement('td');
+                encodingCell.className = 'encoding-cell';
+                encodingCell.dataset.row = i;
+
+                let encodingText = '';
+                // ASCII encoding
+                for (let j = 0; j < 16 && i + j < currentData.length; j++) {
+                    const char = currentData[i + j];
+                    const charText = (char >= 32 && char <= 126) ? String.fromCharCode(char) : '.';
+                    encodingText += `<span class="encoding-char-cell" data-column="${j}">${charText}</span>`;
+                }
+
+                encodingCell.innerHTML = encodingText;
+
+                dataRow.appendChild(encodingCell);
+
+                hexTable.appendChild(dataRow);
+            }
+
+            // Add clear button row
+            const clearRow = document.createElement('tr');
+            clearRow.className = 'clear-row';
+
+            // Create cells for the clear row (spanning all columns)
+            const clearCell = document.createElement('td');
+            clearCell.className = 'clear-cell';
+            clearCell.colSpan = 18; // Address + 16 data columns + encoding column
+
+            // Create container for info and button
+            const infoContainer = document.createElement('div');
+            infoContainer.style.display = 'flex';
+            infoContainer.style.justifyContent = 'space-between';
+            infoContainer.style.alignItems = 'center';
+            infoContainer.style.gap = '15px';
+
+            // Create info section
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'table-file-info';
+            infoDiv.style.fontFamily = 'JetBrains Mono, Courier New, monospace';
+            infoDiv.style.fontSize = '11px';
+            infoDiv.style.color = '#ccc';
+
+            const fileInfo = [];
+            // Always show filename, or indicate if it was pasted
+            fileInfo.push(`📁 ${currentFileName || 'Pasted data'}`);
+            fileInfo.push(`📊 ${currentFileSize} bytes`);
+            fileInfo.push(`🔢 ${Math.ceil(currentFileSize / 16)}`);
+
+            infoDiv.textContent = fileInfo.join(' | ');
+
+            // Create edit button
+            const editButton = document.createElement('button');
+            editButton.className = 'clear-button';
+            editButton.style.backgroundColor = '#4CAF50';
+            editButton.style.marginLeft = '10px';
+            editButton.textContent = 'EDIT';
+            editButton.onclick = function () {
+                openTableEditor(hexTable);
+            };
+
+            // Create close button (initially hidden)
+            const closeButton = document.createElement('button');
+            closeButton.className = 'clear-button close-button';
+            closeButton.style.backgroundColor = '#FFA500';
+            closeButton.style.marginLeft = '10px';
+            closeButton.textContent = 'CLOSE';
+            closeButton.style.display = 'none';
+            closeButton.onclick = function () {
+                closeTableEditor(hexTable);
+            };
+
+            // Create save as button
+            const saveAsButton = document.createElement('button');
+            saveAsButton.className = 'clear-button save-as-button';
+            saveAsButton.style.backgroundColor = '#0D47A1';
+            saveAsButton.style.marginLeft = '10px';
+            saveAsButton.textContent = 'SAVE AS';
+            saveAsButton.style.display = 'block';
+            saveAsButton.onclick = function () {
+                saveTableAs(hexTable);
+            };
+
+            // Create fill button (initially hidden)
+            const fillButton = document.createElement('button');
+            fillButton.className = 'clear-button fill-button';
+            fillButton.style.backgroundColor = '#2196F3';
+            fillButton.style.marginLeft = '10px';
+            fillButton.textContent = 'FILL';
+            fillButton.style.display = 'none';
+            fillButton.onclick = function () {
+                const editorContainer = hexTable.parentElement.querySelector('.table-editor-container[data-table-id="' + hexTable.id + '"]');
+                if (editorContainer) {
+                    const textarea = editorContainer.querySelector('textarea');
+                    if (textarea) {
+                        fillTableFromText(hexTable, textarea);
+                    }
+                }
+            };
+
+            // Create clear button
+            const clearButton = document.createElement('button');
+            clearButton.className = 'clear-button';
+            clearButton.textContent = 'DELETE';
+            clearButton.onclick = function () {
+                const tableNum = parseInt(hexTable.id.replace('data-table-', ''));
+                delete tableIdentifiers[tableNum];
+                hexTable.remove();
+                updateHeaderCounter();
+            };
+
+            infoContainer.appendChild(infoDiv);
+            infoContainer.appendChild(fillButton);
+            infoContainer.appendChild(editButton);
+            infoContainer.appendChild(saveAsButton);
+            infoContainer.appendChild(closeButton);
+            infoContainer.appendChild(clearButton);
+            clearCell.appendChild(infoContainer);
+            clearRow.appendChild(clearCell);
+            hexTable.appendChild(clearRow);
+
+            // Create text editor area (initially hidden)
+            const editorRow = document.createElement('tr');
+            editorRow.className = 'editor-row';
+            editorRow.style.display = 'none';
+            const editorCell = document.createElement('td');
+            editorCell.className = 'editor-cell';
+            editorCell.colSpan = 18;
+            const editorTextarea = document.createElement('textarea');
+            editorTextarea.className = 'editor-textarea';
+            editorTextarea.style.width = '100%';
+            editorTextarea.style.minHeight = '250px';
+            editorTextarea.style.height = '300px';
+            editorTextarea.style.backgroundColor = '#2d2d2d';
+            editorTextarea.style.color = '#ffffff';
+            editorTextarea.style.border = '1px solid #626262';
+            editorTextarea.style.padding = '10px';
+            editorTextarea.style.fontFamily = 'JetBrains Mono, Courier New, monospace';
+            editorTextarea.style.fontSize = '12px';
+            editorTextarea.style.resize = 'vertical';
+
+            // Collect hex data from all data cells in this table
+            const hexData = [];
+            const dataCells = hexTable.querySelectorAll('.data-cell');
+            dataCells.forEach(cell => {
+                if (cell.textContent.trim() !== '') {
+                    hexData.push(cell.textContent);
+                }
+            });
+            // Format with spaces between pairs and newline every 16 bytes
+            let formattedHex = '';
+            for (let i = 0; i < hexData.length; i++) {
+                formattedHex += hexData[i];
+                if ((i + 1) % 16 === 0) {
+                    formattedHex += '\n';
+                } else {
+                    formattedHex += ' ';
+                }
+            }
+            editorTextarea.value = formattedHex.trim();
+
+            // Track changes to show/hide FILL button in button row
+            editorTextarea.addEventListener('input', function () {
+                const originalText = formattedHex.trim();
+                const clearRow = hexTable.querySelector('.clear-row');
+                if (clearRow) {
+                    const allButtons = clearRow.querySelectorAll('.clear-button');
+                    allButtons.forEach(btn => {
+                        if (btn.textContent === 'DELETE' || btn.textContent === 'EDIT') {
+                            btn.style.display = 'none'; // Keep hidden
+                        }
+                        if (btn.textContent === 'FILL') {
+                            if (editorTextarea.value !== originalText) {
+                                btn.style.display = 'block';
+                            } else {
+                                btn.style.display = 'none';
+                            }
+                        }
+                    });
+                }
+            });
+            editorCell.appendChild(editorTextarea);
+            editorRow.appendChild(editorCell);
+            hexTable.insertBefore(editorRow, hexTable.querySelector('.clear-row'));
+
+            updateStatus();
+            updateHeaderCounter();
+            applyHighlighter();
+            if (highlighterCheckbox.checked) {
+                guess();
+            }
+            updateShowGuessButton();
+
+            const encodingCharCells = document.querySelectorAll(`.encoding-char-cell`);
+            encodingCharCells.forEach(cell => {
+                cell.onmouseenter = function (event) {
+                    highlightColumnAndRowFromEncodingCell(this);
+                };
+
+                cell.onmouseleave = function () {
+                    clearHighlights();
+                    hideTooltip();
+                };
+            });
+
+            // Clear the textarea after processing and make it clickable again
+            textarea.value = '';
+            textarea.classList.add('empty');
+        }
+
+        function regenerateCurrentTable(table) {
+            // Use the provided table parameter
+            const targetTable = table;
+
+            // Clear the table content
+            targetTable.innerHTML = '';
+
+            // Create header row
+            const headerRow = document.createElement('tr');
+
+            // First cell - format selector
+            const formatCell = document.createElement('th');
+            const formatSelect = document.createElement('select');
+            formatSelect.className = 'format-selector';
+            formatSelect.id = targetTable.id.replace('data-table-', 'format-select-');
+            formatSelect.innerHTML = '<option value="decimal">Decimal</option><option value="hex">Hex</option>';
+            formatSelect.value = addressFormat;
+            formatSelect.onchange = function () {
+                addressFormat = this.value;
+                regenerateCurrentTable(targetTable);
+            };
+            formatCell.appendChild(formatSelect);
+            headerRow.appendChild(formatCell);
+
+            // Column headers 0-15
+            for (let i = 0; i < 16; i++) {
+                const headerCell = document.createElement('th');
+                if (addressFormat === 'hex') {
+                    headerCell.textContent = i.toString(16).toUpperCase().padStart(2, '0');
+                } else {
+                    headerCell.textContent = i.toString();
+                }
+                headerRow.appendChild(headerCell);
+            }
+
+            // Encoding header with table number
+            const encodingHeaderCell = document.createElement('th');
+            encodingHeaderCell.style.background = '#2d2d2d';
+            encodingHeaderCell.style.color = '#ffffff';
+
+            // Extract table number from targetTable.id (e.g., "data-table-0" -> 0)
+            const tableNum = parseInt(targetTable.id.replace('data-table-', ''));
+            const tableHexNum = '0x' + tableNum.toString(16).toUpperCase().padStart(2, '0');
+
+            encodingHeaderCell.textContent = `${tableHexNum}       ASCII`;
+            headerRow.appendChild(encodingHeaderCell);
+
+            targetTable.appendChild(headerRow);
+
+            // Create data rows with current data
+            for (let i = 0; i < currentData.length; i += 16) {
+                const dataRow = document.createElement('tr');
+
+                // First cell - address
+                const addressCell = document.createElement('td');
+                addressCell.className = 'address-cell';
+                if (addressFormat === 'hex') {
+                    addressCell.textContent = i.toString(16).toUpperCase().padStart(8, '0');
+                } else {
+                    addressCell.textContent = i.toString();
+                }
+                dataRow.appendChild(addressCell);
+
+                // Data cells (16 columns)
+                for (let j = 0; j < 16; j++) {
+                    const dataCell = document.createElement('td');
+                    dataCell.className = 'data-cell';
+                    dataCell.dataset.column = j;
+                    dataCell.dataset.row = i / 16;
+
+                    if (i + j < currentData.length) {
+                        dataCell.textContent = currentData[i + j].toString(16).toUpperCase().padStart(2, '0');
+                        dataCell.onclick = () => selectByte(i + j);
+                    } else {
+                        dataCell.textContent = '';
+                    }
+
+                    // Add hover events
+                    dataCell.onmouseenter = function (event) {
+                        highlightColumnAndRow(this);
+                        showTooltip(this);
+                    };
+                    dataCell.onmouseleave = function () {
+                        clearHighlights();
+                        hideTooltip();
+                    };
+
+                    dataRow.appendChild(dataCell);
+                }
+
+                // Encoding cell
+                const encodingCell = document.createElement('td');
+                encodingCell.className = 'encoding-cell';
+                encodingCell.dataset.row = i;
+
+                let encodingText = '';
+                // ASCII encoding
+                for (let j = 0; j < 16 && i + j < currentData.length; j++) {
+                    const char = currentData[i + j];
+                    const charText = (char >= 32 && char <= 126) ? String.fromCharCode(char) : '.';
+                    encodingText += `<span class="encoding-char-cell" data-column="${j}">${charText}</span>`;
+                }
+
+                encodingCell.innerHTML = encodingText;
+                dataRow.appendChild(encodingCell);
+                targetTable.appendChild(dataRow);
+            }
+
+            // Add clear button row
+            const clearRow = document.createElement('tr');
+            clearRow.className = 'clear-row';
+
+            // Create cells for the clear row (spanning all columns)
+            const clearCell = document.createElement('td');
+            clearCell.className = 'clear-cell';
+            clearCell.colSpan = 18;
+
+            // Create container for info and button
+            const infoContainer = document.createElement('div');
+            infoContainer.style.display = 'flex';
+            infoContainer.style.justifyContent = 'space-between';
+            infoContainer.style.alignItems = 'center';
+            infoContainer.style.gap = '15px';
+
+            // Create info section
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'table-file-info';
+            infoDiv.style.fontFamily = 'JetBrains Mono, Courier New, monospace';
+            infoDiv.style.fontSize = '11px';
+            infoDiv.style.color = '#ccc';
+
+            const fileInfo = [];
+            // Always show filename, or indicate if it was pasted
+            fileInfo.push(`📁 ${currentFileName || 'Pasted data'}`);
+            fileInfo.push(`📊 ${currentFileSize} bytes`);
+            fileInfo.push(`🔢 ${Math.ceil(currentFileSize / 16)}`);
+
+            infoDiv.textContent = fileInfo.join(' | ');
+
+            // Create edit button
+            const editButton = document.createElement('button');
+            editButton.className = 'clear-button';
+            editButton.style.backgroundColor = '#4CAF50';
+            editButton.style.marginLeft = '10px';
+            editButton.textContent = 'EDIT';
+            editButton.onclick = function () {
+                openTableEditor(targetTable);
+            };
+            // Create save as button
+            const saveAsButton = document.createElement('button');
+            saveAsButton.className = 'clear-button save-as-button';
+            saveAsButton.style.backgroundColor = '#0D47A1';
+            saveAsButton.style.marginLeft = '10px';
+            saveAsButton.textContent = 'SAVE AS';
+            saveAsButton.style.display = 'block';
+            saveAsButton.onclick = function () {
+                saveTableAs(targetTable);
+            };
+
+            // Create close button (initially hidden)
+            const closeButton2 = document.createElement('button');
+            closeButton2.className = 'clear-button';
+            closeButton2.style.backgroundColor = '#FFA500';
+            closeButton2.style.marginLeft = '10px';
+            closeButton2.textContent = 'CLOSE';
+            closeButton2.style.display = 'none';
+            closeButton2.onclick = function () {
+                closeTableEditor(targetTable);
+            };
+
+            // Create fill button (initially hidden)
+            const fillButton2 = document.createElement('button');
+            fillButton2.className = 'clear-button fill-button';
+            fillButton2.style.backgroundColor = '#2196F3';
+            fillButton2.style.marginLeft = '10px';
+            fillButton2.textContent = 'FILL';
+            fillButton2.style.display = 'none';
+            fillButton2.onclick = function () {
+                const editorContainer = targetTable.parentElement.querySelector('.table-editor-container[data-table-id="' + targetTable.id + '"]');
+                if (editorContainer) {
+                    const textarea = editorContainer.querySelector('textarea');
+                    if (textarea) {
+                        fillTableFromText(targetTable, textarea);
+                    }
+                }
+            };
+
+            // Create clear button
+            const clearButton = document.createElement('button');
+            clearButton.className = 'clear-button';
+            clearButton.textContent = 'DELETE';
+            clearButton.onclick = function () {
+                const tableNum = parseInt(targetTable.id.replace('data-table-', ''));
+                delete tableIdentifiers[tableNum];
+                targetTable.remove();
+                updateHeaderCounter();
+            };
+
+            infoContainer.appendChild(infoDiv);
+            infoContainer.appendChild(fillButton2);
+            infoContainer.appendChild(editButton);
+            infoContainer.appendChild(saveAsButton);
+            infoContainer.appendChild(closeButton2);
+            infoContainer.appendChild(clearButton);
+            clearCell.appendChild(infoContainer);
+            clearRow.appendChild(clearCell);
+            targetTable.appendChild(clearRow);
+
+            // Create text editor area (initially hidden)
+            const editorRow = document.createElement('tr');
+            editorRow.className = 'editor-row';
+            editorRow.style.display = 'none';
+            const editorCell = document.createElement('td');
+            editorCell.className = 'editor-cell';
+            editorCell.colSpan = 18;
+            const editorTextarea = document.createElement('textarea');
+            editorTextarea.className = 'editor-textarea';
+            editorTextarea.style.width = '100%';
+            editorTextarea.style.minHeight = '200px';
+            editorTextarea.style.height = '200px';
+            editorTextarea.style.backgroundColor = '#2d2d2d';
+            editorTextarea.style.color = '#ffffff';
+            editorTextarea.style.border = '1px solid #626262';
+            editorTextarea.style.padding = '10px';
+            editorTextarea.style.fontFamily = 'JetBrains Mono, Courier New, monospace';
+            editorTextarea.style.fontSize = '12px';
+            editorTextarea.style.resize = 'vertical';
+
+            // Collect hex data from all data cells in this table
+            const hexData = [];
+            const dataCells = targetTable.querySelectorAll('.data-cell');
+            dataCells.forEach(cell => {
+                if (cell.textContent.trim() !== '') {
+                    hexData.push(cell.textContent);
+                }
+            });
+            // Format with spaces between pairs and newline every 16 bytes
+            let formattedHex = '';
+            for (let i = 0; i < hexData.length; i++) {
+                formattedHex += hexData[i];
+                if ((i + 1) % 16 === 0) {
+                    formattedHex += '\n';
+                } else {
+                    formattedHex += ' ';
+                }
+            }
+            editorTextarea.value = formattedHex.trim();
+
+            // Track changes to show/hide FILL button in button row
+            editorTextarea.addEventListener('input', function () {
+                const originalText = formattedHex.trim();
+                const clearRow = targetTable.querySelector('.clear-row');
+                if (clearRow) {
+                    const allButtons = clearRow.querySelectorAll('.clear-button');
+                    allButtons.forEach(btn => {
+                        if (btn.textContent === 'DELETE' || btn.textContent === 'EDIT' || btn.textContent === 'SAVE AS') {
+                            btn.style.display = 'none'; // Keep hidden
+                        }
+                        if (btn.textContent === 'FILL') {
+                            if (editorTextarea.value !== originalText) {
+                                btn.style.display = 'block';
+                            } else {
+                                btn.style.display = 'none';
+                            }
+                        }
+                    });
+                }
+            });
+
+            editorCell.appendChild(editorTextarea);
+            editorRow.appendChild(editorCell);
+            targetTable.insertBefore(editorRow, targetTable.querySelector('.clear-row'));
+
+            updateStatus();
+            applyHighlighter();
+            if (highlighterCheckbox.checked) {
+                guess();
+            }
+            updateShowGuessButton();
+
+            const encodingCharCells = document.querySelectorAll(`.encoding-char-cell`);
+            encodingCharCells.forEach(cell => {
+                cell.onmouseenter = function (event) {
+                    highlightColumnAndRowFromEncodingCell(this);
+                };
+
+                cell.onmouseleave = function () {
+                    clearHighlights();
+                    hideTooltip();
+                };
+            });
+        }
+
+        function selectByte(index) {
+            cursorPosition = index;
+            updateStatus();
+        }
+
+        function updateStatus() {
+            // Status updates are no longer needed since status column was removed
+        }
+
+        function fillTableFromText(table, textarea) {
+            // Get hex data from text field
+            const hexText = textarea.value.replace(/[\s\n]/g, ''); // Remove spaces and newlines
+            const bytes = [];
+
+            // Parse every 2 characters
+            for (let i = 0; i < hexText.length; i += 2) {
+                if (i + 1 < hexText.length) {
+                    const hex = hexText.substr(i, 2);
+                    const byte = parseInt(hex, 16);
+                    if (!isNaN(byte)) {
+                        bytes.push(byte);
+                    }
+                }
+            }
+
+            // Update currentData
+            currentData = new Uint8Array(bytes);
+            currentFileSize = currentData.length;
+
+            // Remove old data rows
+            const oldRows = table.querySelectorAll('tr');
+            oldRows.forEach((row, index) => {
+                if (index > 0 && !row.classList.contains('clear-row') && !row.classList.contains('editor-row')) {
+                    row.remove();
+                }
+            });
+
+            // Recreate data rows
+            const headerRow = table.querySelector('tr');
+            for (let i = 0; i < currentData.length; i += 16) {
+                const dataRow = document.createElement('tr');
+
+                // Address cell
+                const addressCell = document.createElement('td');
+                addressCell.className = 'address-cell';
+                if (addressFormat === 'hex') {
+                    addressCell.textContent = i.toString(16).toUpperCase().padStart(8, '0');
+                } else {
+                    addressCell.textContent = i.toString();
+                }
+                dataRow.appendChild(addressCell);
+
+                // Data cells
+                for (let j = 0; j < 16; j++) {
+                    const dataCell = document.createElement('td');
+                    dataCell.className = 'data-cell';
+                    dataCell.dataset.column = j;
+                    dataCell.dataset.row = i / 16;
+
+                    if (i + j < currentData.length) {
+                        dataCell.textContent = currentData[i + j].toString(16).toUpperCase().padStart(2, '0');
+                        dataCell.onclick = () => selectByte(i + j);
+                    } else {
+                        dataCell.textContent = '';
+                    }
+
+                    dataCell.onmouseenter = function (event) {
+                        highlightColumnAndRow(this);
+                        showTooltip(this);
+                    };
+                    dataCell.onmouseleave = function () {
+                        clearHighlights();
+                        hideTooltip();
+                    };
+
+                    dataRow.appendChild(dataCell);
+                }
+
+                // Encoding cell
+                const encodingCell = document.createElement('td');
+                encodingCell.className = 'encoding-cell';
+                encodingCell.dataset.row = i;
+
+                let encodingText = '';
+                if (encodingFormat === 'ascii') {
+                    for (let j = 0; j < 16 && i + j < currentData.length; j++) {
+                        const char = currentData[i + j];
+                        const charText = (char >= 32 && char <= 126) ? String.fromCharCode(char) : '.';
+                        encodingText += `<span class="encoding-char-cell" data-column="${j}">${charText}</span>`;
+                    }
+                } else if (encodingFormat === 'utf8') {
+                    try {
+                        const rowBytes = currentData.slice(i, i + 16);
+                        const decoder = new TextDecoder('utf-8', { fatal: false });
+                        const decoded = decoder.decode(rowBytes);
+                        const cleanDecoded = decoded.replace(/[\x00-\x1F\x7F-\x9F]/g, '.');
+                        for (let j = 0; j < cleanDecoded.length; j++) {
+                            encodingText += `<span class="encoding-char-cell" data-column="${j}">${cleanDecoded[j]}</span>`;
+                        }
+                    } catch (e) {
+                        for (let j = 0; j < 16 && i + j < currentData.length; j++) {
+                            const char = currentData[i + j];
+                            const charText = (char >= 32 && char <= 126) ? String.fromCharCode(char) : '.';
+                            encodingText += `<span class="encoding-char-cell" data-column="${j}">${charText}</span>`;
+                        }
+                    }
+                }
+
+                encodingCell.innerHTML = encodingText;
+                dataRow.appendChild(encodingCell);
+                table.insertBefore(dataRow, table.querySelector('.clear-row'));
+            }
+
+            // Update encoding char cells event handlers
+            const encodingCharCells = table.querySelectorAll(`.encoding-char-cell`);
+            encodingCharCells.forEach(cell => {
+                cell.onmouseenter = function (event) {
+                    highlightColumnAndRowFromEncodingCell(this);
+                };
+                cell.onmouseleave = function () {
+                    clearHighlights();
+                    hideTooltip();
+                };
+            });
+
+            // Update file info with new size
+            const clearRow = table.querySelector('.clear-row');
+            if (clearRow) {
+                const infoDiv = clearRow.querySelector('.table-file-info');
+                if (infoDiv) {
+                    const fileInfo = [];
+                    fileInfo.push(`📁 ${currentFileName || 'Pasted data'}`);
+                    fileInfo.push(`📊 ${currentFileSize} bytes`);
+                    fileInfo.push(`🔢 ${Math.ceil(currentFileSize / 16)}`);
+                    infoDiv.textContent = fileInfo.join(' | ');
+                }
+
+                // Find the info container div that holds all the buttons
+                const infoContainer = clearRow.querySelector('div[style*="display: flex"]');
+
+                // Update button visibility
+                const allButtons = infoContainer ? infoContainer.querySelectorAll('button') : [];
+                allButtons.forEach(btn => {
+                    if (btn.textContent === 'DELETE') {
+                        btn.style.setProperty('display', 'block', 'important');
+                    }
+                    if (btn.textContent === 'EDIT') {
+                        btn.style.setProperty('display', 'block', 'important');
+                    }
+                    if (btn.textContent === 'CLOSE') {
+                        btn.style.display = 'none';
+                    }
+                    if (btn.textContent === 'FILL') {
+                        btn.style.display = 'none';
+                    }
+                });
+            }
+
+            // Close the editor text field
+            closeTableEditor(table);
+        }
+
+        function openTableEditor(table) {
+            // Create editor container outside the table
+            const editorContainer = document.createElement('div');
+            editorContainer.className = 'table-editor-container';
+            editorContainer.dataset.tableId = table.id;
+
+            const editorTextarea = document.createElement('textarea');
+            editorTextarea.className = 'editor-textarea';
+            editorTextarea.id = table.id.replace('data-table-', 'textarea-');
+            editorTextarea.style.width = '100%';
+            editorTextarea.style.minHeight = '200px';
+            editorTextarea.style.height = '200px';
+            editorTextarea.style.backgroundColor = '#2d2d2d';
+            editorTextarea.style.color = '#ffffff';
+            editorTextarea.style.border = '1px solid #626262';
+            editorTextarea.style.padding = '10px';
+            editorTextarea.style.fontFamily = 'JetBrains Mono, Courier New, monospace';
+            editorTextarea.style.fontSize = '12px';
+            editorTextarea.style.resize = 'vertical';
+            editorTextarea.style.display = 'block';
+            editorTextarea.style.marginBottom = '30px';
+            editorTextarea.style.marginTop = '-30px';
+
+            // Collect hex data from table
+            const hexData = [];
+            const dataCells = table.querySelectorAll('.data-cell');
+            dataCells.forEach(cell => {
+                if (cell.textContent.trim() !== '') {
+                    hexData.push(cell.textContent);
+                }
+            });
+
+            // Format hex data
+            let formattedHex = '';
+            for (let i = 0; i < hexData.length; i++) {
+                formattedHex += hexData[i];
+                if ((i + 1) % 16 === 0) {
+                    formattedHex += '\n';
+                } else {
+                    formattedHex += ' ';
+                }
+            }
+            editorTextarea.value = formattedHex.trim();
+
+            // Track changes to show/hide FILL button
+            editorTextarea.addEventListener('input', function () {
+                const originalText = formattedHex.trim();
+                const clearRow = table.querySelector('.clear-row');
+                if (clearRow) {
+                    const allButtons = clearRow.querySelectorAll('.clear-button');
+                    allButtons.forEach(btn => {
+                        if (btn.textContent === 'DELETE' || btn.textContent === 'EDIT' || btn.textContent === 'SAVE AS') {
+                            btn.style.display = 'none';
+                        }
+                        if (btn.textContent === 'FILL') {
+                            if (editorTextarea.value !== originalText) {
+                                btn.style.display = 'block';
+                            } else {
+                                btn.style.display = 'none';
+                            }
+                        }
+                    });
+                }
+            });
+
+            editorContainer.appendChild(editorTextarea);
+
+            // Insert after the table
+            table.parentElement.insertBefore(editorContainer, table.nextSibling);
+
+            // Show/hide buttons
+            const clearRow = table.querySelector('.clear-row');
+            if (clearRow) {
+                const allButtons = clearRow.querySelectorAll('.clear-button');
+                allButtons.forEach(btn => {
+                    if (btn.textContent === 'DELETE' || btn.textContent === 'EDIT' || btn.textContent === 'SAVE AS') {
+                        btn.style.display = 'none';
+                    }
+                    if (btn.textContent === 'CLOSE') {
+                        btn.style.display = 'block';
+                    }
+                    if (btn.textContent === 'FILL') {
+                        btn.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        function closeTableEditor(table) {
+            // Remove the editor container
+            const editorContainer = table.parentElement.querySelector('.table-editor-container[data-table-id="' + table.id + '"]');
+            if (editorContainer) {
+                editorContainer.remove();
+            }
+
+            // Show/hide buttons
+            const clearRow = table.querySelector('.clear-row');
+            if (clearRow) {
+                const allButtons = clearRow.querySelectorAll('.clear-button');
+                allButtons.forEach(btn => {
+                    if (btn.textContent === 'DELETE' || btn.textContent === 'EDIT' || btn.textContent === 'SAVE AS') {
+                        btn.style.display = 'block';
+                    }
+                    if (btn.textContent === 'CLOSE' || btn.textContent === 'FILL') {
+                        btn.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        function highlightColumnAndRow(cell) {
+            const column = parseInt(cell.dataset.column);
+            const rowIndex = parseInt(cell.dataset.row);
+
+            // Clear previous highlights
+            clearHighlights();
+
+            // Get the table containing this cell and the row element
+            const table = cell.closest('.data-table');
+            const row = cell.closest('tr');
+
+            // Get bits value
+            const bitsValue = parseInt(document.getElementById('bits').value);
+
+            // Highlight current cell
+            cell.classList.add('data-cell-highlight');
+
+            // If bits is 16, also highlight next cell
+            if (bitsValue === 16 && column < 15) {
+                const nextColumn = column + 1;
+                const nextDataCell = row.querySelector(`.data-cell[data-column="${nextColumn}"]`);
+                if (nextDataCell) {
+                    nextDataCell.classList.add('data-cell-highlight');
+                }
+
+                // Highlight next header cell too
+                const headerCells = table.querySelectorAll('th');
+                if (headerCells[nextColumn + 1]) {
+                    headerCells[nextColumn + 1].classList.add('header-highlight');
+                }
+            }
+
+            // Highlight header cell for this column
+            const headerCells = table.querySelectorAll('th');
+            if (headerCells[column + 1]) { // +1 because first column is format selector
+                headerCells[column + 1].classList.add('header-highlight');
+            }
+
+            // Calculate the table row number (header is row 1, data starts at row 2)
+            const tableRowNumber = Math.floor(rowIndex) + 2;
+
+            // Highlight address cell for this row
+            const addressCell = table.querySelector(`tr:nth-child(${tableRowNumber}) .address-cell`);
+            if (addressCell) {
+                addressCell.classList.add('address-highlight');
+            }
+            // Highlight corresponding character in encoding cell
+            const encodingCell = table.querySelector(`tr:nth-child(${tableRowNumber}) .encoding-cell`);
+            if (encodingCell) {
+                const encodingChar = encodingCell.querySelector(`.encoding-char-cell[data-column="${column}"]`);
+                if (encodingChar) {
+                    encodingChar.classList.add('encoding-char-highlight');
+                }
+            }
+        }
+
+
+        function highlightColumnAndRowFromEncodingCell(cell) {
+            const column = parseInt(cell.dataset.column);
+            // Clear previous highlights
+            clearHighlights();
+            // const table = cell.parentElement.parentElement;
+            const row = cell.closest('tr');
+            const table = cell.closest('.data-table');
+            const dataCell = row.querySelector(`.data-cell[data-column="${column}"]`);
+            if (dataCell) {
+                // console.log(dataCell);
+                dataCell.classList.add('data-cell-highlight');
+                showTooltip(dataCell);
+            }
+
+            // Get bits value
+            const bitsValue = parseInt(document.getElementById('bits').value);
+
+            // If bits is 16, also highlight next cell
+            if (bitsValue === 16 && column < 15) {
+                const nextColumn = column + 1;
+                const nextDataCell = row.querySelector(`.data-cell[data-column="${nextColumn}"]`);
+                if (nextDataCell) {
+                    nextDataCell.classList.add('data-cell-highlight');
+                }
+
+                // Highlight next header cell too
+                const headerCells = table.querySelectorAll('th');
+                if (headerCells[nextColumn + 1]) {
+                    headerCells[nextColumn + 1].classList.add('header-highlight');
+                }
+            }
+
+            // Highlight header cell for this column
+            const headerCells = table.querySelectorAll('th');
+            if (headerCells[column + 1]) { // +1 because first column is format selector
+                headerCells[column + 1].classList.add('header-highlight');
+            }
+
+            const addressCell = row.querySelector(`.address-cell`);
+            if (addressCell) {
+                addressCell.classList.add('address-highlight');
+            }
+        }
+
+        function clearHighlights() {
+
+            // Remove data cell highlights
+            const dataCells = document.querySelectorAll('.data-cell');
+            dataCells.forEach(cell => cell.classList.remove('data-cell-highlight'));
+
+            // Remove header highlights
+            const headerCells = document.querySelectorAll('.data-table th');
+            headerCells.forEach(cell => cell.classList.remove('header-highlight'));
+
+            // Remove address highlights
+            const addressCells = document.querySelectorAll('.address-cell');
+            addressCells.forEach(cell => cell.classList.remove('address-highlight'));
+
+            // Remove encoding character highlights
+            const encodingChars = document.querySelectorAll('.encoding-char-cell');
+            encodingChars.forEach(char => char.classList.remove('encoding-char-highlight'));
+        }
+
+        function showTooltip(cell) {
+
+            const column = parseInt(cell.dataset.column);
+            const row = parseInt(cell.dataset.row) * 16;
+            const byteIndex = row + column;
+
+            // Get the table containing this cell
+            const table = cell.closest('.data-table');
+
+            // Extract data from the table
+            const tableData = [];
+            const dataCells = table.querySelectorAll('.data-cell');
+            dataCells.forEach(cell => {
+                if (cell.textContent.trim() !== '') {
+                    tableData.push(parseInt(cell.textContent, 16) || 0);
+                } else {
+                    tableData.push(0);
+                }
+            });
+
+            // Create tooltip if it doesn't exist
+            let tooltip = document.getElementById('hex-tooltip');
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.id = 'hex-tooltip';
+                tooltip.className = 'tooltip';
+                document.body.appendChild(tooltip);
+            }
+
+            // Set tooltip content - show both decimal and hex address
+            const addressDec = byteIndex.toString();
+            const addressHex = byteIndex.toString(16).toUpperCase().padStart(8, '0');
+
+            let value;
+            let binValue;
+            const bitsValue = parseInt(document.getElementById('bits').value);
+
+            // If bits is 16, read two bytes
+            if (bitsValue === 16 && byteIndex + 1 < tableData.length) {
+                const byte1 = tableData[byteIndex];
+                const byte2 = tableData[byteIndex + 1];
+
+                if (byteOrder === 'little-endian') {
+                    // Little-endian: low byte first, high byte second
+                    value = byte1 | (byte2 << 8);
+                } else {
+                    // Big-endian: high byte first, low byte second
+                    value = (byte1 << 8) | byte2;
+                }
+                binValue = value.toString(2).toUpperCase().padStart(16, '0');
+                // Add space every 4 bits: 0000 0000 0000 0000
+                binValue = binValue.match(/.{1,4}/g).join(' ');
+            } else {
+                // 8-bit mode
+                value = tableData[byteIndex] || 0;
+                binValue = value.toString(2).toUpperCase().padStart(8, '0');
+                // Add space every 4 bits: 0000 0000
+                binValue = binValue.match(/.{1,4}/g).join(' ');
+            }
+
+            tooltip.innerHTML = `<span>ADDRESS: ${addressDec} | 0x${addressHex}</span>
+            <span>DECIMAL: ${value}</span>
+            <span>BIN: ${binValue}</span>`;
+
+            // Position tooltip centered above the cell
+            const rect = cell.getBoundingClientRect();
+            const tooltipWidth = tooltip.offsetWidth || 120; // Estimate width if not yet rendered
+            const cellCenterX = rect.left + (rect.width / 2);
+            const tooltipLeft = cellCenterX - (tooltipWidth / 2);
+
+            tooltip.style.left = (tooltipLeft + window.scrollX - 20) + 'px';
+            tooltip.style.top = (rect.top + window.scrollY - (rect.height * 3)) + 'px';
+
+            tooltip.style.display = 'flex';
+        }
+
+        function hideTooltip() {
+            const tooltip = document.getElementById('hex-tooltip');
+            if (tooltip) {
+                tooltip.style.display = 'none';
+            }
+        }
+
+        function openFile() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    currentFileName = file.name; // Store the filename
+                    isFromFile = true; // Mark as from file
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const arrayBuffer = e.target.result;
+                        const bytes = new Uint8Array(arrayBuffer);
+
+                        // Convert to hex string
+                        let hexString = '';
+                        for (let i = 0; i < bytes.length; i++) {
+                            hexString += bytes[i].toString(16).padStart(2, '0').toUpperCase();
+                        }
+
+                        document.getElementById('hexTextarea').value = hexString;
+                        updateHexDisplay();
+                    };
+                    reader.readAsArrayBuffer(file);
+                }
+            };
+            input.click();
+        }
+
+        function saveTableAs(table) {
+            // Get hex data from all data cells in this table
+            const bytes = [];
+            const dataCells = table.querySelectorAll('.data-cell');
+            dataCells.forEach(cell => {
+                if (cell.textContent.trim() !== '') {
+                    const byte = parseInt(cell.textContent, 16);
+                    if (!isNaN(byte)) {
+                        bytes.push(byte);
+                    }
+                }
+            });
+
+            if (bytes.length === 0) {
+                alert('No data to save');
+                return;
+            }
+
+            const blob = new Blob([new Uint8Array(bytes)], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = currentFileName || 'table_data.bin';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function saveFile() {
+            if (currentData.length === 0) {
+                alert('No data to save');
+                return;
+            }
+
+            const blob = new Blob([currentData], { type: 'application/octet-stream' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'hex_editor_output.bin';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function clearEditor() {
+            const textarea = document.getElementById('hexTextarea');
+            const hexTableContainer = document.getElementById('hexTableContainer');
+
+            // Remove all tables from container
+            hexTableContainer.innerHTML = '';
+
+            textarea.value = '';
+            textarea.classList.add('empty');
+            textarea.classList.remove('body-positioned');
+            hexTableContainer.style.display = 'none';
+            currentData = new Uint8Array(0);
+            currentFileName = '';
+            currentFileSize = 0;
+            cursorPosition = 0;
+            tableIdentifiers = []; // Clear table identifiers array
+            updateStatus();
+            updateHeaderCounter();
+        }
+
+        // Initialize counter on page load
+        updateHeaderCounter();
+
+        // Initialize highlighter checkbox
+        const highlighterCheckbox = document.getElementById('highlighter-checkbox');
+        highlighterCheckbox.addEventListener('change', function () {
+            applyHighlighter();
+            if (highlighterCheckbox.checked) {
+                guess();
+            }
+            updateShowGuessButton();
+        });
+
+        // Function to update Show Guess button visibility
+        function updateShowGuessButton() {
+            const showGuessButton = document.getElementById('show-guess-button');
+
+            // Get filtered addresses (appearing 4+ times)
+            const result = guess();
+
+            if (result && result.length > 0) {
+                showGuessButton.parentElement.style.display = 'block';
+            } else {
+                showGuessButton.parentElement.style.display = 'none';
+            }
+        }
+
+        // Initialize Show Guess button
+        const showGuessButton = document.getElementById('show-guess-button');
+        showGuessButton.addEventListener('click', function () {
+            const modal = document.getElementById('guessModal');
+            const modalTitle = document.getElementById('guessModalTitle');
+            const modalBody = document.getElementById('guessModalBody');
+
+            // Get filtered addresses (appearing 4+ times)
+            const result = guess();
+
+            // Count number of tables
+            const tables = document.querySelectorAll('.data-table');
+            const tableCount = tables.length;
+
+            if (result && result.length > 0) {
+                // Get unique addresses (by adr)
+                const uniqueAddresses = [];
+                const seenAdr = new Set();
+
+                result.forEach(item => {
+                    if (!seenAdr.has(item.adr)) {
+                        seenAdr.add(item.adr);
+                        uniqueAddresses.push(item);
+                    }
+                });
+
+                // Create list of unique addresses for the title
+                const addressesList = uniqueAddresses.map(item =>
+                    `adr: ${item.adr} | adrHex: 0x${item.adrHex}`
+                ).join('<br>');
+
+                modalTitle.innerHTML = `The expected PIN<br>consists of ${tableCount} tables<br><br>${addressesList}`;
+
+                // Show ALL results (not just unique) in the modal body
+                modalBody.innerHTML = result.map(item =>
+                    `<div class="guess-item">
+                        <strong>${item.filename || 'tableID-' + item.tID}</strong> | 0x${item.adrHex} | ${item.dec}
+                    </div>`
+                ).join('');
+            } else {
+                modalTitle.textContent = `The expected PIN consists of ${tableCount} tables`;
+                modalBody.innerHTML = '<p style="text-align: center; color: #888;">No highlighted addresses found</p>';
+            }
+
+            modal.style.display = 'block';
+        });
+
+        function closeGuessModal() {
+            const modal = document.getElementById('guessModal');
+            modal.style.display = 'none';
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function (event) {
+            const modal = document.getElementById('guessModal');
+            if (event.target === modal) {
+                closeGuessModal();
+            }
+        }
+
+        // Function to apply highlighting to cells with values between 0 and 10000
+        function applyHighlighter() {
+            const tables = document.querySelectorAll('.data-table');
+
+            // If checkbox is unchecked, just remove highlights
+            if (!highlighterCheckbox.checked) {
+                tables.forEach(table => {
+                    const dataCells = table.querySelectorAll('.data-cell');
+                    dataCells.forEach(cell => {
+                        // Remove all highlight color classes
+                        for (let i = 0; i < 12; i++) {
+                            cell.classList.remove(`highlight-color-${i}`);
+                        }
+                        cell.classList.remove('highlight-green');
+                    });
+                });
+                return;
+            }
+
+            tables.forEach((table, tableIndex) => {
+                const dataCells = table.querySelectorAll('.data-cell');
+
+                // Remove previous highlighting
+                dataCells.forEach(cell => {
+                    for (let i = 0; i < 12; i++) {
+                        cell.classList.remove(`highlight-color-${i}`);
+                    }
+                    cell.classList.remove('highlight-green');
+                });
+
+                // Find repeating decimal values between 110 and 10000
+                const valueCounts = new Map();
+                const pairs = [];
+
+                // First pass: count occurrences of each uint16 value
+                for (let i = 0; i < dataCells.length; i += 2) {
+                    if (i + 1 < dataCells.length) {
+                        const cell1 = dataCells[i];
+                        const cell2 = dataCells[i + 1];
+
+                        const byte1 = parseInt(cell1.textContent, 16) || 0;
+                        const byte2 = parseInt(cell2.textContent, 16) || 0;
+                        const uint16Value = byte1 | (byte2 << 8);
+
+                        // Only consider values between 110 and 10000
+                        if (uint16Value > 110 && uint16Value < 10000) {
+                            const count = valueCounts.get(uint16Value) || 0;
+                            valueCounts.set(uint16Value, count + 1);
+
+                            pairs.push({ uint16Value, cell1, cell2 });
+                        }
+                    }
+                }
+
+                // Get unique values that appear at least twice
+                const uniqueValues = [];
+                valueCounts.forEach((count, value) => {
+                    if (count >= 2) {
+                        uniqueValues.push(value);
+                    }
+                });
+
+                // Assign color index to each unique value
+                const valueColorMap = new Map();
+                uniqueValues.forEach((value, index) => {
+                    valueColorMap.set(value, index % 12); // Loop through 12 colors
+                });
+
+                // Apply colors to cells based on their decimal value
+                pairs.forEach(({ uint16Value, cell1, cell2 }) => {
+                    if (valueColorMap.has(uint16Value)) {
+                        const colorIndex = valueColorMap.get(uint16Value);
+                        cell1.classList.add(`highlight-color-${colorIndex}`);
+                        cell2.classList.add(`highlight-color-${colorIndex}`);
+                    }
+                });
+            });
+        }
+
+        // Function to collect and print addresses of highlighted cells
+        function guess() {
+            const tables = document.querySelectorAll('.data-table');
+            const highlightedAddresses = [];
+
+            tables.forEach(table => {
+                const dataCells = table.querySelectorAll('.data-cell');
+
+                // Process cells in pairs to find highlighted pairs
+                for (let i = 0; i < dataCells.length; i += 2) {
+                    if (i + 1 < dataCells.length) {
+                        const cell1 = dataCells[i];
+                        const cell2 = dataCells[i + 1];
+
+                        // Check if both cells are highlighted with the same color
+                        let bothHighlighted = false;
+                        let colorIndex = -1;
+                        for (let j = 0; j < 12; j++) {
+                            if (cell1.classList.contains(`highlight-color-${j}`) &&
+                                cell2.classList.contains(`highlight-color-${j}`)) {
+                                bothHighlighted = true;
+                                colorIndex = j;
+                                break;
+                            }
+                        }
+
+                        if (bothHighlighted) {
+                            // Get row and column info
+                            const row = parseInt(cell1.dataset.row);
+                            const column = parseInt(cell1.dataset.column);
+
+                            // Calculate address index (each row has 16 columns, so address is row * 16 + column)
+                            const addressIndex = (row * 16) + column;
+
+                            // Get the byte values
+                            const byte1 = parseInt(cell1.textContent, 16) || 0;
+                            const byte2 = parseInt(cell2.textContent, 16) || 0;
+
+                            // Calculate little-endian uint16 value
+                            const uint16Value = byte1 | (byte2 << 8);
+
+                            // Store address info
+                            // Extract just the number from table.id (e.g., "data-table-2" -> "2")
+                            const tableNum = parseInt(table.id.replace('data-table-', ''));
+
+                            // Get filename from tableIdentifiers array
+                            const filename = tableIdentifiers[tableNum] || `tableID-${tableNum}`;
+
+                            highlightedAddresses.push({
+                                tID: tableNum,
+                                filename: filename,
+                                adr: addressIndex,
+                                adrHex: addressIndex.toString(16).toUpperCase().padStart(4, '0'),
+                                hex: `${byte1.toString(16).toUpperCase().padStart(2, '0')} ${byte2.toString(16).toUpperCase().padStart(2, '0')}`,
+                                dec: uint16Value,
+                                row: row,
+                                col: column
+                            });
+                        }
+                    }
+                }
+            });
+
+            // Count occurrences of each address
+            const addressCounts = new Map();
+            highlightedAddresses.forEach(item => {
+                const count = addressCounts.get(item.adr) || 0;
+                addressCounts.set(item.adr, count + 1);
+            });
+
+            // Filter to keep only addresses that appear 4 times or more
+            const filteredAddresses = highlightedAddresses.filter(item => {
+                return addressCounts.get(item.adr) >= 4;
+            });
+
+            // Sort by tID before printing
+            filteredAddresses.sort((a, b) => a.tID - b.tID);
+
+            console.log('Highlighted addresses (repeated 4+ times):', filteredAddresses);
+            return filteredAddresses;
+        }
+
+        function handleTextareaClick() {
+            const textarea = document.getElementById('hexTextarea');
+            if (textarea.classList.contains('empty')) {
+                // Check if any tables exist
+                const hexTableContainer = document.getElementById('hexTableContainer');
+                const tables = hexTableContainer.querySelectorAll('.data-table');
+
+                if (tables.length === 0) {
+                    // No tables exist - single file upload mode
+                    openFile();
+                } else {
+                    // Tables exist - multi file upload mode
+                    openMultipleFiles();
+                }
+            }
+        }
+
+        function openMultipleFiles() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.multiple = true; // Enable multiple file selection
+            input.onchange = function (event) {
+                const files = event.target.files;
+                if (files.length > 0) {
+                    // Process each file
+                    Array.from(files).forEach(file => {
+                        loadFile(file);
+                    });
+                }
+            };
+            input.click();
+        }
+
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(event) {
+            event.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('drag-over');
+
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                // Check if any tables exist
+                const hexTableContainer = document.getElementById('hexTableContainer');
+                const tables = hexTableContainer.querySelectorAll('.data-table');
+
+                if (tables.length === 0) {
+                    // No tables exist - single file upload mode
+                    loadFile(files[0]);
+                } else {
+                    // Tables exist - multi file upload mode
+                    Array.from(files).forEach(file => {
+                        loadFile(file);
+                    });
+                }
+            }
+        }
+
+        function loadFile(file) {
+            const fileName = file.name; // Store filename in local variable
+            isFromFile = true; // Mark as from file
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const arrayBuffer = e.target.result;
+                const bytes = new Uint8Array(arrayBuffer);
+
+                // Convert to hex string
+                let hexString = '';
+                for (let i = 0; i < bytes.length; i++) {
+                    hexString += bytes[i].toString(16).padStart(2, '0').toUpperCase();
+                }
+
+                // Set filename before calling updateHexDisplay
+                currentFileName = fileName;
+                currentFileSize = bytes.length;
+                document.getElementById('hexTextarea').value = hexString;
+                updateHexDisplay();
+            };
+            reader.readAsArrayBuffer(file);
+        }
+
+        // Initialize the display
+        updateHexDisplay();
+
+        // Toggle description sections
+        function setupDescriptionToggle() {
+            const descriptionEn = document.getElementById('description-en');
+
+            // Set up click handler for English description
+            if (descriptionEn) {
+                const enHeader = descriptionEn.querySelector('h3');
+                if (enHeader) {
+                    enHeader.addEventListener('click', function () {
+                        descriptionEn.classList.toggle('expanded');
+                    });
+                }
+            }
+        }
+
+        // Initialize description toggles
+        setupDescriptionToggle();
+    </script>
+</body>
+
+</html>
