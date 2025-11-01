@@ -1223,7 +1223,8 @@ ECLIPSE OLD - 2669</pre>
         </div>
         <div id="autor-infi-license">
             <p>Program type: Hex Editor Visualizer, Notebook</p>
-            <p>Program name: gravibit | Version: 0.0.2 01.11.2025 | ⚖️ License: <a
+            <p>Program name: gravibit</p>
+            <p>Version: 0.0.3 | Github <a  href="https://github.com/gravitymir/web-hex-editor" target="blAnk"><span id="github-version">loading...</span></a> | ⚖️ License: <a
                     href="https://en.wikipedia.org/wiki/MIT_License" target="_blank">MIT</a> | Autor: <a
                     href="https://t.me/gravitymir" target="_blank">@gravitymir</a></p>
         </div>
@@ -2964,6 +2965,50 @@ ECLIPSE OLD - 2669</pre>
 
         // Initialize description toggles
         setupDescriptionToggle();
+
+        // Function to fetch GitHub version
+        async function fetchGitHubVersion() {
+            const githubVersionSpan = document.getElementById('github-version');
+            if (!githubVersionSpan) return;
+
+            try {
+                // Use raw.githubusercontent.com to get the raw file content
+                const rawUrl = 'https://raw.githubusercontent.com/gravitymir/web-hex-editor/master/gravibit.html';
+                const response = await fetch(rawUrl);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch from GitHub');
+                }
+
+                const htmlContent = await response.text();
+                
+                // Search for the version pattern in the HTML
+                // Looking for: Version: X.X.X BETA DD.MM.YYYY
+                const versionMatch = htmlContent.match(/Version:\s*([\d.]+\s+[\d.]+)/i);
+                
+                if (versionMatch && versionMatch[1]) {
+                    githubVersionSpan.textContent = versionMatch[1];
+                    githubVersionSpan.style.color = '#4CAF50';
+                } else {
+                    // Try alternative pattern: Version: X.X.X | or Version: X.X.X BETA
+                    const altMatch = htmlContent.match(/Version:\s*([\d.]+\s*[\s\d.]*)/i);
+                    if (altMatch && altMatch[1]) {
+                        githubVersionSpan.textContent = altMatch[1].trim();
+                        githubVersionSpan.style.color = '#4CAF50';
+                    } else {
+                        throw new Error('Version not found in file');
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching GitHub version:', error);
+                githubVersionSpan.textContent = 'error';
+                githubVersionSpan.style.color = '#e24747';
+                githubVersionSpan.title = 'Failed to fetch version from GitHub';
+            }
+        }
+
+        // Fetch GitHub version on page load
+        fetchGitHubVersion();
     </script>
 </body>
 
