@@ -1697,7 +1697,7 @@ ECLIPSE OLD - 2669</pre>
         <div id="autor-infi-license">
             <p>Program type: Hex Editor Visualizer, Notebook</p>
             <p>
-                Version: 0.0.6
+                Version: 0.0.7
                 <span id="github-version-info" style="display: none;">
                     | Github
                     <button id="githubModalButton" class="github-modal-button">
@@ -3203,6 +3203,8 @@ ECLIPSE OLD - 2669</pre>
         let originalBitsValue = null;
         let savedScrollPosition = 0; // Store scroll position when modal opens
         let originalCellValues = null; // Store original cell textContent values before editing
+        let firstByteForDisplay = 0; // For 16-bit mode: first cell byte value
+        let secondByteForDisplay = 0; // For 16-bit mode: next cell byte value
 
         // GitHub modal handlers
         function openGithubModal() {
@@ -3280,8 +3282,8 @@ ECLIPSE OLD - 2669</pre>
 
             // For 16-bit mode we still want to *display* bytes in table order (first cell, then next cell),
             // independently of byte-order used for decimal calculation.
-            let firstByteForDisplay = currentValue & 0xFF;
-            let secondByteForDisplay = 0;
+            firstByteForDisplay = currentValue & 0xFF;
+            secondByteForDisplay = 0;
             if (effectiveBits === 16) {
                 if (byteOrder === 'little-endian') {
                     // value = byte1 | (byte2 << 8)
@@ -3419,19 +3421,26 @@ ECLIPSE OLD - 2669</pre>
                     byteGroupDiv.className = 'binary-byte-group';
                     
                     // Two nibble groups (4 bits each)
+                    // Display order: first nibble group = high nibble (bits 7-4), second nibble group = low nibble (bits 3-0)
                     for (let nibbleGroup = 0; nibbleGroup < 2; nibbleGroup++) {
                         const nibbleGroupDiv = document.createElement('div');
                         nibbleGroupDiv.className = 'binary-nibble-group';
                         
                         // 4 binary toggle buttons per nibble group
+                        // nibbleGroup 0 = high nibble (bits 7-4), nibbleGroup 1 = low nibble (bits 3-0)
                         for (let bitInNibble = 0; bitInNibble < 4; bitInNibble++) {
-                            const bitIndex = (nibbleGroup * 4) + (3 - bitInNibble); // MSB first
+                            // Calculate bit index: high nibble (7-4) first, then low nibble (3-0)
+                            const bitIndex = (nibbleGroup === 0) 
+                                ? (7 - bitInNibble)  // High nibble: bits 7, 6, 5, 4
+                                : (3 - bitInNibble); // Low nibble: bits 3, 2, 1, 0
                             
                             const button = document.createElement('button');
                             button.className = 'binary-toggle-button';
                             button.type = 'button';
                             const bitValue = (currentValue >> bitIndex) & 1;
                             button.textContent = bitValue.toString();
+                            button.id = `binary-button-${bitIndex}`;
+                            button.name = `binary-bit-${bitIndex}`;
                             button.dataset.bitIndex = bitIndex;
                             
                             // Add value-1 class if bitValue is 1
@@ -3474,8 +3483,16 @@ ECLIPSE OLD - 2669</pre>
 
                 const hexSelectCount = effectiveBits === 8 ? 2 : 4;
                 // Create custom horizontal hex dropdowns
-                // Hex display always shows standard format (high nibble to low nibble), byte order only affects decimal calculation
+                // For 16-bit mode: hex display shows bytes in table order (first cell = high byte, next cell = low byte)
+                // For 8-bit mode: hex display shows standard format (high nibble to low nibble)
                 const hexOptions = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+                
+                // For 16-bit mode, use display bytes in table order (firstByteForDisplay = high byte, secondByteForDisplay = low byte)
+                let hexDisplayValue = currentValue;
+                if (effectiveBits === 16) {
+                    hexDisplayValue = (firstByteForDisplay << 8) | secondByteForDisplay;
+                }
+                
                 for (let i = 0; i < hexSelectCount; i++) {
                     // Calculate logical nibble index (high nibble first, low nibble last)
                     // i=0 -> nibble 3 (leftmost), i=1 -> nibble 2, i=2 -> nibble 1, i=3 -> nibble 0 (rightmost)
@@ -3489,7 +3506,7 @@ ECLIPSE OLD - 2669</pre>
                     const button = document.createElement('button');
                     button.className = 'hex-dropdown-button';
                     button.type = 'button';
-                    const nibbleValue = (currentValue >> (logicalNibbleIndex * 4)) & 0xF;
+                    const nibbleValue = (hexDisplayValue >> (logicalNibbleIndex * 4)) & 0xF;
                     button.textContent = nibbleValue.toString(16).toUpperCase();
                     button.id = `hex-button-${logicalNibbleIndex}`;
                     button.name = `hex-nibble-${logicalNibbleIndex}`;
@@ -3649,13 +3666,18 @@ ECLIPSE OLD - 2669</pre>
                 byteGroupDiv.className = 'binary-byte-group';
                 
                 // Two nibble groups (4 bits each)
+                // Display order: first nibble group = high nibble (bits 7-4), second nibble group = low nibble (bits 3-0)
                 for (let nibbleGroup = 0; nibbleGroup < 2; nibbleGroup++) {
                     const nibbleGroupDiv = document.createElement('div');
                     nibbleGroupDiv.className = 'binary-nibble-group';
                     
                     // 4 binary toggle buttons per nibble group
+                    // nibbleGroup 0 = high nibble (bits 7-4), nibbleGroup 1 = low nibble (bits 3-0)
                     for (let bitInNibble = 0; bitInNibble < 4; bitInNibble++) {
-                        const bitIndex = (nibbleGroup * 4) + (3 - bitInNibble); // MSB first
+                        // Calculate bit index: high nibble (7-4) first, then low nibble (3-0)
+                        const bitIndex = (nibbleGroup === 0) 
+                            ? (7 - bitInNibble)  // High nibble: bits 7, 6, 5, 4
+                            : (3 - bitInNibble); // Low nibble: bits 3, 2, 1, 0
                         
                         const button = document.createElement('button');
                         button.className = 'binary-toggle-button';
@@ -3704,8 +3726,16 @@ ECLIPSE OLD - 2669</pre>
 
             const hexSelectCount = bitsValue === 8 ? 2 : 4;
             // Create custom horizontal hex dropdowns
-            // Hex display always shows standard format (high nibble to low nibble), byte order only affects decimal calculation
+            // For 16-bit mode: hex display shows bytes in table order (first cell = high byte, next cell = low byte)
+            // For 8-bit mode: hex display shows standard format (high nibble to low nibble)
             const hexOptions = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+            
+            // For 16-bit mode, use display bytes in table order (firstByteForDisplay = high byte, secondByteForDisplay = low byte)
+            let hexDisplayValue = currentValue;
+            if (bitsValue === 16 && usesTwoBytes) {
+                hexDisplayValue = (firstByteForDisplay << 8) | secondByteForDisplay;
+            }
+            
             for (let i = 0; i < hexSelectCount; i++) {
                 // Calculate logical nibble index (high nibble first, low nibble last)
                 // i=0 -> nibble 3 (leftmost), i=1 -> nibble 2, i=2 -> nibble 1, i=3 -> nibble 0 (rightmost)
@@ -3719,7 +3749,7 @@ ECLIPSE OLD - 2669</pre>
                 const button = document.createElement('button');
                 button.className = 'hex-dropdown-button';
                 button.type = 'button';
-                const nibbleValue = (currentValue >> (logicalNibbleIndex * 4)) & 0xF;
+                const nibbleValue = (hexDisplayValue >> (logicalNibbleIndex * 4)) & 0xF;
                 button.textContent = nibbleValue.toString(16).toUpperCase();
                 button.id = `hex-button-${logicalNibbleIndex}`;
                 button.name = `hex-nibble-${logicalNibbleIndex}`;
@@ -3845,6 +3875,18 @@ ECLIPSE OLD - 2669</pre>
                 });
             }
 
+            // For 16-bit mode, update display bytes based on byte order
+            if (bitsMode === 16) {
+                let byteOrder = document.querySelector('input[name="byte-order"]:checked')?.value || 'little-endian';
+                if (byteOrder === 'little-endian') {
+                    firstByteForDisplay = value & 0xFF;
+                    secondByteForDisplay = (value >> 8) & 0xFF;
+                } else {
+                    firstByteForDisplay = (value >> 8) & 0xFF;
+                    secondByteForDisplay = value & 0xFF;
+                }
+            }
+
             // Update hex selects
             updateHexSelectsFromValue(value);
             // Update new value line (preview only in modal, not saved to cell yet)
@@ -3853,13 +3895,31 @@ ECLIPSE OLD - 2669</pre>
 
         function updateValueFromHex() {
             const hexDropdowns = document.querySelectorAll('.hex-dropdown');
-            let value = 0;
+            let hexDisplayValue = 0;
             hexDropdowns.forEach((dropdown) => {
                 const nibbleIndex = parseInt(dropdown.dataset.nibbleIndex);
                 const button = dropdown.querySelector('.hex-dropdown-button');
                 const nibbleValue = parseInt(button.textContent, 16);
-                value |= (nibbleValue << (nibbleIndex * 4));
+                hexDisplayValue |= (nibbleValue << (nibbleIndex * 4));
             });
+
+            // For 16-bit mode: extract bytes from hex display value and convert to currentValue based on byte order
+            let value = hexDisplayValue;
+            if (originalBitsValue === 16) {
+                // Extract bytes from hex display (high byte = firstByteForDisplay, low byte = secondByteForDisplay)
+                firstByteForDisplay = (hexDisplayValue >> 8) & 0xFF;
+                secondByteForDisplay = hexDisplayValue & 0xFF;
+                
+                // Convert to currentValue based on byte order
+                let byteOrder = document.querySelector('input[name="byte-order"]:checked')?.value || 'little-endian';
+                if (byteOrder === 'little-endian') {
+                    // value = firstByteForDisplay | (secondByteForDisplay << 8)
+                    value = firstByteForDisplay | (secondByteForDisplay << 8);
+                } else {
+                    // value = (firstByteForDisplay << 8) | secondByteForDisplay
+                    value = (firstByteForDisplay << 8) | secondByteForDisplay;
+                }
+            }
 
             // Update binary selects
             updateBinarySelectsFromValue(value);
@@ -3878,11 +3938,37 @@ ECLIPSE OLD - 2669</pre>
             let currentValue = 0;
             const binaryButtons = document.querySelectorAll('.binary-toggle-button');
             if (binaryButtons.length > 0) {
-                binaryButtons.forEach(button => {
-                    const bitIndex = parseInt(button.dataset.bitIndex);
-                    const bitValue = parseInt(button.textContent);
-                    currentValue |= (bitValue << bitIndex);
-                });
+                if (currentBitsValue === 16) {
+                    // 16-bit mode: use byteIndex and bitInByte
+                    let byte0 = 0;
+                    let byte1 = 0;
+                    
+                    binaryButtons.forEach(button => {
+                        const byteIndex = parseInt(button.dataset.byteIndex ?? '0');
+                        const bitInByte = parseInt(button.dataset.bitInByte ?? '0');
+                        const bitValue = parseInt(button.textContent);
+                        if (byteIndex === 0) {
+                            byte0 |= (bitValue << bitInByte);
+                        } else {
+                            byte1 |= (bitValue << bitInByte);
+                        }
+                    });
+                    
+                    // Map bytes to 16-bit value using current byte-order
+                    let byteOrder = document.querySelector('input[name="byte-order"]:checked')?.value || 'little-endian';
+                    if (byteOrder === 'little-endian') {
+                        currentValue = byte0 | (byte1 << 8);
+                    } else {
+                        currentValue = (byte0 << 8) | byte1;
+                    }
+                } else {
+                    // 8-bit mode: use bitIndex
+                    binaryButtons.forEach(button => {
+                        const bitIndex = parseInt(button.dataset.bitIndex);
+                        const bitValue = parseInt(button.textContent);
+                        currentValue |= (bitValue << bitIndex);
+                    });
+                }
             }
 
             // Check if value or bits changed
@@ -3898,9 +3984,15 @@ ECLIPSE OLD - 2669</pre>
 
         function updateHexSelectsFromValue(value) {
             const hexDropdowns = document.querySelectorAll('.hex-dropdown');
+            // For 16-bit mode, use display bytes in table order (firstByteForDisplay = high byte, secondByteForDisplay = low byte)
+            let hexDisplayValue = value;
+            if (originalBitsValue === 16) {
+                hexDisplayValue = (firstByteForDisplay << 8) | secondByteForDisplay;
+            }
+            
             hexDropdowns.forEach(dropdown => {
                 const nibbleIndex = parseInt(dropdown.dataset.nibbleIndex);
-                const nibbleValue = (value >> (nibbleIndex * 4)) & 0xF;
+                const nibbleValue = (hexDisplayValue >> (nibbleIndex * 4)) & 0xF;
                 const button = dropdown.querySelector('.hex-dropdown-button');
                 const options = dropdown.querySelector('.hex-dropdown-options');
                 const hexValue = nibbleValue.toString(16).toUpperCase();
@@ -3992,26 +4084,17 @@ ECLIPSE OLD - 2669</pre>
             });
 
             if (bitsValue === 16 && currentEditingByteIndex + 1 < tableData.length) {
-                // Update two bytes
-                let byte1, byte2;
-                if (byteOrder === 'little-endian') {
-                    byte1 = value & 0xFF;
-                    byte2 = (value >> 8) & 0xFF;
-                } else {
-                    byte1 = (value >> 8) & 0xFF;
-                    byte2 = value & 0xFF;
-                }
-
-                // Update first byte cell
+                // Update two bytes using display bytes (in table order, matching hex display)
+                // firstByteForDisplay = first cell, secondByteForDisplay = next cell
                 const firstCell = Array.from(dataCells)[currentEditingByteIndex];
                 if (firstCell) {
-                    firstCell.textContent = byte1.toString(16).toUpperCase().padStart(2, '0');
+                    firstCell.textContent = firstByteForDisplay.toString(16).toUpperCase().padStart(2, '0');
                 }
 
                 // Update second byte cell
                 const secondCell = Array.from(dataCells)[currentEditingByteIndex + 1];
                 if (secondCell) {
-                    secondCell.textContent = byte2.toString(16).toUpperCase().padStart(2, '0');
+                    secondCell.textContent = secondByteForDisplay.toString(16).toUpperCase().padStart(2, '0');
                 }
             } else {
                 // Update single byte
@@ -4051,27 +4134,19 @@ ECLIPSE OLD - 2669</pre>
             const cellsToUpdate = [];
 
             if (bitsValue === 16 && currentEditingByteIndex + 1 < dataCells.length) {
-                // Update two bytes
-                let byte1, byte2;
-                if (byteOrder === 'little-endian') {
-                    byte1 = value & 0xFF;
-                    byte2 = (value >> 8) & 0xFF;
-                } else {
-                    byte1 = (value >> 8) & 0xFF;
-                    byte2 = value & 0xFF;
-                }
-
+                // Update two bytes using display bytes (in table order, matching hex display)
+                // firstByteForDisplay = first cell, secondByteForDisplay = next cell
                 // Update first byte cell
                 const firstCell = Array.from(dataCells)[currentEditingByteIndex];
                 if (firstCell) {
-                    firstCell.textContent = byte1.toString(16).toUpperCase().padStart(2, '0');
+                    firstCell.textContent = firstByteForDisplay.toString(16).toUpperCase().padStart(2, '0');
                     cellsToUpdate.push(firstCell);
                 }
 
                 // Update second byte cell
                 const secondCell = Array.from(dataCells)[currentEditingByteIndex + 1];
                 if (secondCell) {
-                    secondCell.textContent = byte2.toString(16).toUpperCase().padStart(2, '0');
+                    secondCell.textContent = secondByteForDisplay.toString(16).toUpperCase().padStart(2, '0');
                     cellsToUpdate.push(secondCell);
                 }
             } else {
