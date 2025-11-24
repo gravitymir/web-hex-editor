@@ -1697,7 +1697,7 @@ ECLIPSE OLD - 2669</pre>
         <div id="autor-infi-license">
             <p>Program type: Hex Editor Visualizer, Notebook</p>
             <p>
-                Version: 0.0.7
+                Version: 0.0.8
                 <span id="github-version-info" style="display: none;">
                     | Github
                     <button id="githubModalButton" class="github-modal-button">
@@ -4102,9 +4102,66 @@ ECLIPSE OLD - 2669</pre>
                 currentEditingCell.textContent = byteValue.toString(16).toUpperCase().padStart(2, '0');
             }
 
+            // Update encoding cell (ASCII view) for the row containing the updated cell
+            const cellsToUpdate = [];
+            if (bitsValue === 16 && currentEditingByteIndex + 1 < tableData.length) {
+                const firstCell = Array.from(dataCells)[currentEditingByteIndex];
+                const secondCell = Array.from(dataCells)[currentEditingByteIndex + 1];
+                if (firstCell) cellsToUpdate.push(firstCell);
+                if (secondCell) cellsToUpdate.push(secondCell);
+            } else {
+                if (currentEditingCell) cellsToUpdate.push(currentEditingCell);
+            }
+            updateEncodingCellsForUpdatedCells(currentEditingTable, cellsToUpdate);
+
             // Update currentData array if needed
             // This would require tracking which table corresponds to which data array
             // For now, we'll just update the display
+        }
+
+        /**
+         * Update encoding cell (ASCII view) for rows containing the updated data cells
+         * Reuses the same logic as when creating tables
+         * @param {HTMLElement} table - The data table element
+         * @param {Array} updatedCells - Array of data cells that were updated
+         */
+        function updateEncodingCellsForUpdatedCells(table, updatedCells) {
+            if (!table || !updatedCells || updatedCells.length === 0) return;
+
+            // Find unique rows that contain the updated cells
+            const rowsToUpdate = new Set();
+            updatedCells.forEach(cell => {
+                // Find the parent row of this data cell
+                const row = cell.closest('tr');
+                if (row && !row.classList.contains('clear-row') && !row.classList.contains('editor-row')) {
+                    rowsToUpdate.add(row);
+                }
+            });
+
+            // Update encoding cell for each affected row
+            rowsToUpdate.forEach(row => {
+                const encodingCell = row.querySelector('.encoding-cell');
+                if (!encodingCell) return;
+
+                // Get all data cells in this row
+                const dataCells = Array.from(row.querySelectorAll('.data-cell'));
+                let encodingText = '';
+
+                // ASCII encoding - same logic as when creating the table
+                for (let j = 0; j < 16 && j < dataCells.length; j++) {
+                    const dataCell = dataCells[j];
+                    let charValue = 0;
+                    
+                    if (dataCell && dataCell.textContent.trim() !== '') {
+                        charValue = parseInt(dataCell.textContent, 16) || 0;
+                    }
+                    
+                    const charText = (charValue >= 32 && charValue <= 126) ? String.fromCharCode(charValue) : '.';
+                    encodingText += `<span class="encoding-char-cell" data-column="${j}">${charText}</span>`;
+                }
+
+                encodingCell.innerHTML = encodingText;
+            });
         }
 
         function saveBitEditorChanges() {
@@ -4169,6 +4226,9 @@ ECLIPSE OLD - 2669</pre>
                     cell.classList.remove('data-cell-fade-highlight');
                 }, 2000);
             });
+
+            // Update encoding cells (ASCII view) for rows that contain updated data cells
+            updateEncodingCellsForUpdatedCells(currentEditingTable, cellsToUpdate);
 
             // Update original values to reflect saved state
             originalValue = value;
